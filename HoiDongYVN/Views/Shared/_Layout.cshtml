@@ -6,30 +6,67 @@
     <title>@ViewData["Title"] - HoiDongYVN</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
 </head>
 <body>
     <header>
         <img src="~/image/Banner.gif" width="100%" center no-repeat" valign="top" />
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background:url(/image/bgMenuFooter.gif); height:34px">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HoiDongYVN</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button> 
-                
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-image: linear-gradient(rgba(141,44,27), rgba(95,13,2))">
+             <div class="container">
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <a class="navbar-brand" asp-area="" asp-controller="home" asp-action="index">Trang chủ</a>
+                            <div class="dropdown show">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
+                                    Giới thiệu
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
+                                    <a class="dropdown-item" href="#">action</a>
+                                    <a class="dropdown-item" href="#">another action</a>
+                                    <a class="dropdown-item" href="#">something else here</a>
+                                </div>
+                            </div>
+                            <div class="dropdown show">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
+                                    Tin tức & Sự kiện
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
+                                    <a class="dropdown-item" href="#">action</a>
+                                    <a class="dropdown-item" href="#">another action</a>
+                                    <a class="dropdown-item" href="#">something else here</a>
+                                </div>
+                            </div>
+                            <div class="dropdown show">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
+                                    Kiến thức đông y
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
+                                    <a class="dropdown-item" href="#">action</a>
+                                    <a class="dropdown-item" href="#">another action</a>
+                                    <a class="dropdown-item" href="#">something else here</a>
+                                </div>
+                            </div>
+                            <div class="dropdown show">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
+                                    Văn bản pháp luật
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
+                                    <a class="dropdown-item" href="#">action</a>
+                                    <a class="dropdown-item" href="#">another action</a>
+                                    <a class="dropdown-item" href="#">something else here</a>
+                                </div>
+                            </div>
+                            <div class="dropdown show">
+                                <a class="btn btn-secondary" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
+                                    Đăng nhập
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -37,7 +74,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted" style="background-image: linear-gradient(rgba(141,44,27), rgba(95,13,2))">
         <div class="container">
             &copy; 2023 - HoiDongYVN - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
@@ -48,3 +85,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
