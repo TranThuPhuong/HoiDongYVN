@@ -1,4 +1,5 @@
 ﻿using HoiDongYVN.Models;
+using HoiDongYVN.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,10 +13,12 @@ namespace HoiDongYVN.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+         private readonly IPost _iPost;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IPost iPost)
         {
             _logger = logger;
+            _iPost = iPost;
         }
 
         public IActionResult Index()
@@ -23,9 +26,11 @@ namespace HoiDongYVN.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Post()
         {
-            return View();
+             List<Post> issuccess = await _iPost.getListPost();
+            return View(issuccess);
+           
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
