@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - HoiDongYVN</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
 
 </head>
 <body>
@@ -16,23 +17,23 @@
                         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                             <a class="navbar-brand" asp-area="" asp-controller="home" asp-action="index">Trang chủ</a>
                             <div class="dropdown show">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
+                                <a class="btn btn-secondary" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
                                     Giới thiệu
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
+                                @*<div class="dropdown-menu" aria-labelledby="dropdownmenulink">
                                     <a class="dropdown-item" href="#">action</a>
                                     <a class="dropdown-item" href="#">another action</a>
                                     <a class="dropdown-item" href="#">something else here</a>
-                                </div>
+                                </div>*@
                             </div>
                             <div class="dropdown show">
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
                                     Tin tức & Sự kiện
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
-                                    <a class="dropdown-item" href="#">action</a>
-                                    <a class="dropdown-item" href="#">another action</a>
-                                    <a class="dropdown-item" href="#">something else here</a>
+                                    <a class="dropdown-item" href="#">Tin hoạt động</a>
+                                    <a class="dropdown-item" href="#">Tin trong nước</a>
+                                    <a class="dropdown-item" href="#">Tin quốc tế</a>
                                 </div>
                             </div>
                             <div class="dropdown show">
@@ -40,9 +41,8 @@
                                     Kiến thức đông y
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
-                                    <a class="dropdown-item" href="#">action</a>
-                                    <a class="dropdown-item" href="#">another action</a>
-                                    <a class="dropdown-item" href="#">something else here</a>
+                                    <a class="dropdown-item" href="#">Bài thuốc quý</a>
+                                    <a class="dropdown-item" href="#">Cẩm nang đông y</a>
                                 </div>
                             </div>
                             <div class="dropdown show">
@@ -50,9 +50,9 @@
                                     Văn bản pháp luật
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
-                                    <a class="dropdown-item" href="#">action</a>
-                                    <a class="dropdown-item" href="#">another action</a>
-                                    <a class="dropdown-item" href="#">something else here</a>
+                                    <a class="dropdown-item" href="#">Nghị định</a>
+                                    <a class="dropdown-item" href="#">Thông tư</a>
+                                    <a class="dropdown-item" href="#">Quyết định</a>
                                 </div>
                             </div>
                             <div class="dropdown show">

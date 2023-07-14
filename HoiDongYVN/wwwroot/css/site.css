@@ -16,9 +16,9 @@ a {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    background: #842416 !important;
+    border: 1px solid #842416 !important;
+    color: #fff !important;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -98,3 +98,67 @@ button {
 .category{
     margin-bottom:30px
 }
+.post-title {
+    color: #660000;
+    font-weight: bold;
+    text-align: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 9pt;
+    line-height: 1.5em;
+    vertical-align: inherit;
+    margin-bottom:10px
+}
+.past-link {
+    color : #660000;
+}
+.post-description {
+    line-height: 13pt;
+    text-align: justify;
+    font-family: Calibri, sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 10px
+}
+.post-img {
+    margin-bottom: 10px
+}
+.card-header {
+    color: White;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px;
+    background-image: linear-gradient(rgba(141,44,27), rgba(95,13,2));
+}
+.left-menu {
+    background-color: #fff !important;
+    color: #697a8d;
+    box-shadow: 0 0.125rem 0.375rem 0 rgba(161,172,184,.12);
+    padding-left:0;
+    padding-right:0;
+}
+.list-group-flush .list-group-item {
+    border-radius: 0.25rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border:none;
+
+  
+}
+
+.btn sm.btn-create-post {
+    color: #fff;
+    background-color: #6A1408;
+    border-color: #6A1408;
+}
+
+
+.login-wrap {
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+}
+
+
