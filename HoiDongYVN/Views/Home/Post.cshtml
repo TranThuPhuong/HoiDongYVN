@@ -9,12 +9,12 @@
         <div class="container">
             <div class="new-title"
                 style="display: flex !important; align-items: center !important;justify-content: space-between !important; margin-bottom:20px">
-                <h4 style="text-align:left; display:inline">Tin tức hoạt động</h4>
-                <a class="btn btn-outline-success btn-sm btn-viewall " href="#">Xem tất cả</a>
+                <h4 style="text-align:left; display:inline">@ViewData["tag"]
+                </h4>
+                @* <a class="btn btn-outline-success btn-sm btn-viewall " href="#">Xem tất cả</a> *@
             </div>
             <div class="row">
                 <div class="w-100 category news col-9">
-
                     @{
                         foreach (var post in Model)
                         {
@@ -53,11 +53,18 @@
                 <div class="col-3">
                     <div class="card" style="width: 18rem;">
                         <div class="card-header">
-                            Featured
+                            Danh mục
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
+                            <li class="list-group-item"><a class="btn link-secondary" asp-area="" asp-controller="Home"
+                                    asp-action="Post" asp-route-FK_iTagID="2" asp-route-FK_iTagIDSub="3">Tất cả bài
+                                    viết</a></li>
+                            <li class="list-group-item"><a class="btn link-secondary" asp-area="" asp-controller="Home"
+                                    asp-action="Post" asp-route-FK_iTagID="3">Tin tức quốc tế</a>
+                            </li>
+                            <li class="list-group-item"><a class="btn link-secondary" asp-area="" asp-controller="Home"
+                                    asp-action="Post" asp-route-FK_iTagID="2">Tin tức trong nước</a>
+                            </li>
                             <li class="list-group-item">A third item</li>
                         </ul>
                     </div>

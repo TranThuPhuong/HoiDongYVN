@@ -17,9 +17,24 @@ namespace HoiDongYVN.Repository
         }
 
 
-        public async Task<List<Post>> getListPost()
+        public async Task<List<Post>> getListPost(int? FK_iTagID, int? FK_iTagIDSub)
         {
-            return await _context.tblPost.ToListAsync();
+            if (FK_iTagID != null)
+            {
+                if (FK_iTagIDSub != null)
+                {
+                    return await _context.tblPost.Where(x => (x.FK_iTagID == FK_iTagID || x.FK_iTagID == FK_iTagIDSub)).ToListAsync();
+                }
+                else
+                {
+                    return await _context.tblPost.Where(x => x.FK_iTagID == FK_iTagID).ToListAsync();
+                }
+            }
+            else
+            {
+                return await _context.tblPost.ToListAsync();
+            }
+
         }
         public async Task<Post> createPost(Post Post)
         {
