@@ -10,10 +10,11 @@ using HoiDongYVN.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using HoiDongYVN.Controllers.CustomAttributes;
 
 namespace HoiDongYVN.Controllers
 {
-   
+    [CustomAuthorization]
     public class CreatorsController : Controller
     {
         private readonly iCreator creatorRepo;
@@ -24,10 +25,23 @@ namespace HoiDongYVN.Controllers
         }
 
         // GET: Creators
-        //[Authorize(Roles = "Admin")]
+       
         public IActionResult Index()
+
         {
-            return View(creatorRepo.GetCreators());
+            //if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            //{
+                // Người dùng đã đăng nhập và có quyền truy cập vào trang hoặc tài nguyên cụ thể
+                // Thực hiện các thao tác mong muốn tại đây
+                return View(creatorRepo.GetCreators());
+            //}
+            //else
+            //{
+            //    // Người dùng không đủ quyền truy cập vào trang hoặc tài nguyên này
+            //    // Chuyển hướng đến trang đăng nhập hoặc hiển thị thông báo lỗi
+            //    return RedirectToAction("Login", "Login");
+            //}
+           
         }
 
 
@@ -48,11 +62,13 @@ namespace HoiDongYVN.Controllers
 
         //    return view(creator);
         //}
+       
         public IActionResult Detail(int id)
         {
             var creator = creatorRepo.GetCreatorById(id);
             return View(creator);
         }
+
 
         // GET: Creators/Create
         public IActionResult Create()

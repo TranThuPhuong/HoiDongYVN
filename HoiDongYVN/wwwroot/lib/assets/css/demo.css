@@ -826,3 +826,8 @@
 .documentation .dropdown .dropdown-menu.show {
     transform: translate3d(0, 39px, 0) !important;
 }
+.btn-primary {
+    background: #842416 !important;
+    border: 1px solid #842416 !important;
+    color: #fff !important;
+}

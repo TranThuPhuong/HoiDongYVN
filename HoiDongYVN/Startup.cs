@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,9 +41,10 @@ namespace HoiDongYVN
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(option =>
                 {
-                    option.LoginPath = "/Login/Login";
+                   option.LoginPath = "/Login/Login";
                     option.ExpireTimeSpan = TimeSpan.FromMinutes(60);
                 });
+      
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);  // Số phút mà Session tồn tại nếu không có hoạt động nào.

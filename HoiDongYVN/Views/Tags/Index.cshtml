@@ -7,7 +7,7 @@
 
 <h1>Danh sách danh mục</h1>
 <div>
-    <a class="btn btn-sm" asp-controller="Login" asp-action="Create" role="dialog" id="openModalButton" data-toggle="modal" data-target="#LoginModal" aria-haspopup="true" aria-expanded="false" style="color: #fff;background-color: #6A1408;border-color: #6A1408;">Tạo danh mục</a>
+    <a class="btn btn-sm"  role="dialog" id="openModalCreateButton" data-toggle="modal" data-target="#CreateTagModal" aria-haspopup="true" aria-expanded="false" style="color: #fff;background-color: #6A1408;border-color: #6A1408;">Tạo danh mục</a>
 
     <table class="table">
         <thead>
@@ -53,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.IStatus)
                 </td>*@
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.PkITagId"><i class="fa fa-edit"></i></a> |
+                        <a  role="dialog" id="openModalEditButton" data-toggle="modal" data-target="#EditTagModal" aria-haspopup="true" aria-expanded="false"><i class="fa fa-edit"></i></a> |
                         <a asp-action="Details" asp-route-id="@item.PkITagId"><i class="bi bi-eye"></i></a> |
                         <a asp-action="Delete" asp-route-id="@item.PkITagId"><i class="fa fa-times"></i></a>
                     </td>
@@ -62,36 +62,80 @@
             }
         </tbody>
     </table>
-     <div class="dropdown show">
-                      
-                        @*Hiện modal login*@
-                        <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="myModalLabel">ĐĂNG NHẬP</h5>
-                                        
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                       
-                                        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
-                                        {
-                                            <fieldset>
-                                                <div class="form-group">
-                                                    @Html.TextBoxFor(model=>model.Username,new { @class = "form-control rounded-left", placeholder = "Tên đăng nhập", required = "required" })
-                                                </div>
-                                               
-                                            </fieldset>
-                                           
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+    <div class="dropdown show">
+        @* Hiện modal create Tag *@
+        <div class="modal fade" id="CreateTagModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="color: #fff;background-color: #6A1408;">
+                        <h5 class="modal-title" id="myModalLabel" >Tạo danh mục</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:#fff">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-</div>
+                    <div class="modal-body">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label class="control-label">Tên danh mục</label>
+                                <input name="Tagname" class="form-control" />
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dropdown show">
+        @* Hiện modal edit Tag *@
+        <div class="modal fade" id="EditTagModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="color: #fff;background-color: #6A1408;">
+                        <h5 class="modal-title" id="myModalLabel">Sửa danh mục</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:#fff">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label class="control-label">Tên danh mục</label>
+                                <input name="Tagname" class="form-control" />
+                                <span class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Edit" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Get the modal element
+        var modal = document.getElementById("CreateTagModal");
 
+        // Get the button that opens the modal
+        var openModalButton = document.getElementById("openModalCreateButton");
+
+        // Open the modal when the button is clicked
+        openModalButton.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // Close the modal when the user clicks outside of it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</div>
