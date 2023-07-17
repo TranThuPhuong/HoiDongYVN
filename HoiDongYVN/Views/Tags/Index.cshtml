@@ -1,0 +1,97 @@
+﻿@model IEnumerable<HoiDongYVN.Models.Tag>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Danh sách danh mục</h1>
+<div>
+    <a class="btn btn-sm" asp-controller="Login" asp-action="Create" role="dialog" id="openModalButton" data-toggle="modal" data-target="#LoginModal" aria-haspopup="true" aria-expanded="false" style="color: #fff;background-color: #6A1408;border-color: #6A1408;">Tạo danh mục</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.STagname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IStatus)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var dem = 1;
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @dem
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.STagname)
+                    </td>
+                    @if (item.IStatus == 1)
+                    {
+                        <td>
+                            Hoạt động
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            Khóa
+                        </td>
+                    }
+                    @* <td>
+                @Html.DisplayFor(modelItem => item.IStatus)
+                </td>*@
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.PkITagId"><i class="fa fa-edit"></i></a> |
+                        <a asp-action="Details" asp-route-id="@item.PkITagId"><i class="bi bi-eye"></i></a> |
+                        <a asp-action="Delete" asp-route-id="@item.PkITagId"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+                dem++;
+            }
+        </tbody>
+    </table>
+     <div class="dropdown show">
+                      
+                        @*Hiện modal login*@
+                        <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="myModalLabel">ĐĂNG NHẬP</h5>
+                                        
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                       
+                                        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                                        {
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    @Html.TextBoxFor(model=>model.Username,new { @class = "form-control rounded-left", placeholder = "Tên đăng nhập", required = "required" })
+                                                </div>
+                                               
+                                            </fieldset>
+                                           
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+</div>
+

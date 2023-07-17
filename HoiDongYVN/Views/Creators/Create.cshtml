@@ -1,0 +1,80 @@
+﻿@model HoiDongYVN.Models.Creator
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h1>Create</h1>
+
+            <h4>Creator</h4>
+            <hr />
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="SUsername" class="control-label"></label>
+                    <input asp-for="SUsername" class="form-control" />
+                    <span asp-validation-for="SUsername" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="SPassword" class="control-label"></label>
+                    <input type="password" asp-for="SPassword" class="form-control" />
+                    <span asp-validation-for="SPassword" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                    <input type="password" asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="SFullname" class="control-label"></label>
+                    <input asp-for="SFullname" class="form-control" />
+                    <span asp-validation-for="SFullname" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="SEmail" class="control-label"></label>
+                    <input asp-for="SEmail" class="form-control" />
+                    <span asp-validation-for="SEmail" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="SPhone" class="control-label"></label>
+                    <input asp-for="SPhone" class="form-control" />
+                    <span asp-validation-for="SPhone" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IStatus" class="control-label"></label>
+                    <label>(1: Hoạt động; 0: Khóa)</label>
+                    <input asp-for="IStatus" class="form-control" min="0" max="1" value="1" />
+                    <span asp-validation-for="IStatus" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IRole" class="control-label"></label>
+                    <label>(1: Admin; 0: Creator)</label>
+                    <input asp-for="IRole" class="form-control" min="0" max="1" value="0" />
+                    <span asp-validation-for="IRole" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" style="color: #fff;background-color: #6A1408;border-color: #6A1408;"  />
+                </div>
+            </form>
+
+            <div>
+                <a class="btn btn-outline-success btn-sm btn-viewall" asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+

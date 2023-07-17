@@ -1,0 +1,189 @@
+﻿@model IEnumerable<HoiDongYVN.Models.Creator>
+@using HoiDongYVN.Models
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Danh sách người dùng</h1>
+
+<a asp-action="Create" class="btn btn-sm" asp-controller="Creators" asp-action="Create" style="color: #fff;background-color: #6A1408;border-color: #6A1408;">Tạo người dùng</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SUsername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SFullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IRole)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SUsername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SFullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SPhone)
+            </td>
+                @if (item.IStatus == 1)
+                {
+                    <td id="status_text_@item.PkICreatorId">
+                        Hoạt động
+                    </td>
+                }
+                else
+                {
+                    <td id="status_text_@item.PkICreatorId">
+                        Khóa
+                    </td>
+                }
+            @*<td>
+                @Html.DisplayFor(modelItem => item.IStatus)
+            </td>*@
+                @*@if (item.IRole = 1)
+                {
+                    <td>
+                        Admin
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Creator
+                    </td>
+                }*@
+            <td>
+                  @Html.DisplayFor(modelItem => item.IRole)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.PkICreatorId"><i class="fa fa-edit"></i></a> |
+                    <a asp-action="Detail" asp-route-id="@item.PkICreatorId"><i class="bi bi-eye"></i></a> |
+                    @if (item.IStatus == 1)
+                    {
+                       @* <a asp-action="Lock" asp-route-id="@item.PkICreatorId"><i class="bi bi-lock"></i></a>*@
+                        <button id="lockButton_@item.PkICreatorId" onclick="lockObject(@item.PkICreatorId)"><i class="bi bi-lock"></i></button>
+                    }
+                    else
+                    {
+                        @*<a asp-action="Lock" asp-route-id="@item.PkICreatorId"><i class="bi bi-unlock"></i></a>*@
+                        <button id="unlockButton_@item.PkICreatorId" onclick="unlockObject(@item.PkICreatorId)"><i class="bi bi-unlock"></i></button>
+                    }
+                    @*<a asp-action="Delete" asp-route-id="@item.PkICreatorId"><i class="fa fa-times"></i></a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script>
+
+    // Tạo một đối tượng XMLHttpRequest
+    function lockObject(objectId) {
+   
+        var result = confirm("Bạn có muốn khóa người này?");
+        if (result == true) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/Creators/Lock/' + objectId, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+
+                        // Xử lý thành công
+                        //Thực hiện thay đổi trên trang
+                        var button = document.getElementById('lockButton_' + objectId);
+                        var p = document.getElementById('status_text_' + objectId)
+                        p.innerHTML = "Khóa"
+                        button.innerHTML = '<i class="bi bi-unlock"></i>';
+                        button.id = 'unlockButton_' + objectId;
+                        button.onclick = function () {
+                          unlockObject(objectId);
+                        };
+                        
+                    } else {
+                        // Xử lý lỗi
+                        console.log('Có lỗi xảy ra trong quá trình xử lý.');
+                    }
+                }
+            };
+
+            xhr.onerror = function () {
+                // Xử lý lỗi
+                console.log('Có lỗi xảy ra trong quá trình gửi yêu cầu.');
+            };
+
+            xhr.send();
+        }
+
+        
+
+    }
+    function unlockObject(objectId) {
+
+        var result = confirm("Bạn có muốn gỡ khóa người này?");
+        if (result == true) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/Creators/Lock/' + objectId, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+
+                        // Xử lý thành công
+                        //Thực hiện thay đổi trên trang
+                        var button = document.getElementById('unlockButton_' + objectId);
+                        var p = document.getElementById('status_text_' + objectId)
+                        p.innerHTML = "Hoạt động"
+                        button.innerHTML = '<i class="bi bi-lock"></i>';
+                        button.id='lockButton_' + objectId;
+                        button.onclick = function () {
+                           lockObject(objectId);
+                        };
+                        
+
+                    } else {
+                        // Xử lý lỗi
+                        console.log('Có lỗi xảy ra trong quá trình xử lý.');
+                    }
+                }
+            };
+
+            xhr.onerror = function () {
+                // Xử lý lỗi
+                console.log('Có lỗi xảy ra trong quá trình gửi yêu cầu.');
+            };
+
+            xhr.send();
+        }
+
+
+
+    }
+</script>

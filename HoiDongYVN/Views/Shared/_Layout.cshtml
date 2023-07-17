@@ -1,10 +1,12 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - HoiDongYVN</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
 
@@ -13,60 +15,99 @@
     <header>
         <img src="~/image/Banner.gif" width="100%" center no-repeat" valign="top" />
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-image: linear-gradient(rgba(141,44,27), rgba(95,13,2))">
-             <div class="container">
-                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                            <a class="navbar-brand" asp-area="" asp-controller="home" asp-action="index">Trang chủ</a>
-                            <div class="dropdown show">
-                                <a class="btn btn-secondary" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
-                                    Giới thiệu
-                                </a>
-                                @*<div class="dropdown-menu" aria-labelledby="dropdownmenulink">
-                                    <a class="dropdown-item" href="#">action</a>
-                                    <a class="dropdown-item" href="#">another action</a>
-                                    <a class="dropdown-item" href="#">something else here</a>
-                                </div>*@
-                            </div>
-                            <div class="dropdown show">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
-                                    Tin tức & Sự kiện
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
-                                    <a class="dropdown-item" href="#">Tin hoạt động</a>
-                                    <a class="dropdown-item" href="#">Tin trong nước</a>
-                                    <a class="dropdown-item" href="#">Tin quốc tế</a>
-                                </div>
-                            </div>
-                            <div class="dropdown show">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
-                                    Kiến thức đông y
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
-                                    <a class="dropdown-item" href="#">Bài thuốc quý</a>
-                                    <a class="dropdown-item" href="#">Cẩm nang đông y</a>
-                                </div>
-                            </div>
-                            <div class="dropdown show">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
-                                    Văn bản pháp luật
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
-                                    <a class="dropdown-item" href="#">Nghị định</a>
-                                    <a class="dropdown-item" href="#">Thông tư</a>
-                                    <a class="dropdown-item" href="#">Quyết định</a>
-                                </div>
-                            </div>
-                            <div class="dropdown show">
-                                <a class="btn btn-secondary" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
-                                    Đăng nhập
-                                </a>
-
-                            </div>
+            <div class="container">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <a class="navbar-brand" asp-area="" asp-controller="home" asp-action="index">Trang chủ</a>
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
+                            Giới thiệu
+                        </a>
+                        @*<div class="dropdown-menu" aria-labelledby="dropdownmenulink">
+                        <a class="dropdown-item" href="#">action</a>
+                        <a class="dropdown-item" href="#">another action</a>
+                        <a class="dropdown-item" href="#">something else here</a>
+                        </div>*@
+                    </div>
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
+                            Tin tức & Sự kiện
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
+                            <a class="dropdown-item" href="#">Tin hoạt động</a>
+                            <a class="dropdown-item" href="#">Tin trong nước</a>
+                            <a class="dropdown-item" href="#">Tin quốc tế</a>
                         </div>
+                    </div>
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
+                            Kiến thức đông y
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
+                            <a class="dropdown-item" href="#">Bài thuốc quý</a>
+                            <a class="dropdown-item" href="#">Cẩm nang đông y</a>
+                        </div>
+                    </div>
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownmenulink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
+                            Văn bản pháp luật
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownmenulink">
+                            <a class="dropdown-item" href="#">Nghị định</a>
+                            <a class="dropdown-item" href="#">Thông tư</a>
+                            <a class="dropdown-item" href="#">Quyết định</a>
+                        </div>
+                    </div>
+                    <div class="dropdown show">
+                        <a class="btn btn-secondary" asp-controller="Login" asp-action="Login"  role="dialog" id="openModalButton" data-toggle="modal" data-target="#LoginModal" aria-haspopup="true" aria-expanded="false" style="background-color:transparent; border:none;outline: none;">
+                            Đăng nhập
+                        </a>
+                        @*Hiện modal login*@
+                        @*<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="myModalLabel">ĐĂNG NHẬP</h5>
+                                        
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                       
+                                        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                                        {
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    @Html.TextBoxFor(model=>model.Username,new { @class = "form-control rounded-left", placeholder = "Tên đăng nhập", required = "required" })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.PasswordFor(model=>model.Password,new { @class = "form-control rounded-left", placeholder = "Mật khẩu", required = "required" })
+                                                </div>
+                                                <div class="form-group form-check">
+                                                    @Html.CheckBoxFor(model=>model.RememberMe)
+                                                    <label class="form-check-label" for="rememberMe">Remember Me</label>
+                                                </div>
+                                                <div class="form-group text-right">
+                                                    <a href="#">Forgot Password</a>
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <button type="submit" class="btn btn-primary" style="width:100%">Đăng nhập</button>
+                                                </div>
+                                            </fieldset>
+                                           
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
 
                     </div>
 
 
-                </nav>
+                </div>
+            </div>
+
+        </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -81,7 +122,10 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

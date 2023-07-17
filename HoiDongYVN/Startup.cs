@@ -1,6 +1,12 @@
+﻿using HoiDongYVN.Controllers;
+using HoiDongYVN.Models;
+using HoiDongYVN.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +30,27 @@ namespace HoiDongYVN
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            var connectionString = Configuration.GetConnectionString("db_HoiDongYVN");
+            services.AddDbContext<db_HoiDongYVNContext>(options => options.UseSqlServer(connectionString));
+            services.AddScoped<iCreator, CreatorRepo>();
+            services.AddScoped<iPost, PostRepo>();
+
+            // Thêm dịch vụ Session vào container dịch vụ.
+            services.AddDistributedMemoryCache();  // Cho phép lưu trữ Session trong bộ nhớ. Đối với môi trường sản xuất, bạn có thể muốn sử dụng cách lưu trữ khác như Redis.
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(option =>
+                {
+                    option.LoginPath = "/Login/Login";
+                    option.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                });
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);  // Số phút mà Session tồn tại nếu không có hoạt động nào.
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,21 +70,21 @@ namespace HoiDongYVN
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                  name: "areas",
-                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
-            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "creators",
+                    pattern: "creators",
+                    defaults: new { controller = "Creators", action = "Index" });
             });
         }
     }

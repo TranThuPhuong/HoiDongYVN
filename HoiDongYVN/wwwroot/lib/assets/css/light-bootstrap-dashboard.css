@@ -5327,3 +5327,14 @@ table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before {
     bottom: .5em;
 }
+.btn-viewall {
+    background: transparent;
+    color: #6A1408;
+    border-color: #6A1408;
+}
+
+    .btn-viewall:hover {
+        color: #fff;
+        background-color: #6A1408;
+        border-color: #6A1408;
+    }
