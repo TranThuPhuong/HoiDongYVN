@@ -1,0 +1,15 @@
+@model HoiDongYVN.Models.Post
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div>
+    <h1>@Model.STitle</h1>
+    <span>
+        <p>Ngày đăng: </p>
+        <p>@Model.DCreatedDate</p>
+    </span>
+    <hr />
+    @Html.Raw(@Model.SContent)
+
+</div>

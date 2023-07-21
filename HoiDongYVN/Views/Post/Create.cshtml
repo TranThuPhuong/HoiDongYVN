@@ -1,0 +1,110 @@
+﻿@model HoiDongYVN.Models.Post
+
+@{
+    ViewData["Title"] = "Create";
+}
+<link rel="stylesheet" href="~/css/editor.css" />
+<link rel="stylesheet" href="~/lib/ckeditor/samples/toolbarconfigurator/css/fontello.css" />
+
+<h1>Tạo bài đăng</h1>
+
+<h4>Post</h4>
+<hr />
+<div class="row">
+    <div>
+        <form asp-action="Create" method="Post" asp-controller="Post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="STitle" class="control-label"></label>
+                <input asp-for="STitle" class="form-control" />
+                <span asp-validation-for="STitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SDescription" class="control-label"></label>
+                <input asp-for="SDescription" class="form-control" />
+                <span asp-validation-for="SDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SContent" class="control-label"></label>
+                @*<input asp-for="SContent" class="form-control" />*@
+                <div class="adjoined-bottom">
+                    <div class="grid-container">
+                        <div class="grid">
+                            <textarea id="editor" asp-for="SContent">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="getext();">Get text</button>
+
+                <span asp-validation-for="SContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DCreatedDate" class="control-label"></label>
+                <input asp-for="DCreatedDate" class="form-control" />
+                <span asp-validation-for="DCreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DUpDatedDate" class="control-label"></label>
+                <input asp-for="DUpDatedDate" class="form-control" />
+                <span asp-validation-for="DUpDatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SSource" class="control-label"></label>
+                <input asp-for="SSource" class="form-control" />
+                <span asp-validation-for="SSource" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SImage" class="control-label"></label>
+                <input asp-for="SImage" class="form-control" />
+                <span asp-validation-for="SImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IStatus" class="control-label"></label>
+                <input asp-for="IStatus" class="form-control" />
+                <span asp-validation-for="IStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkITagId" class="control-label"></label>
+                <select asp-for="FkITagId" class="form-control" asp-items="ViewBag.FkITagId">
+                    
+                        <option value="1">Kiến thức đông y</option>
+                        <option value="2">Thông tin trong nước</option>
+                        <option value="3">Thông tin quốc tế</option>
+                
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkICreatorId" class="control-label"></label>
+                <select asp-for="FkICreatorId" class="form-control" asp-items="ViewBag.FkICreatorId">
+                    <option value="4">Admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<script src="~/lib/ckeditor/ckeditor.js"></script>
+<script src="~/lib/ckeditor/samples/js/sample.js"></script>
+<script>
+    initSample();
+
+    function getext() {
+        console.log(CKEDITOR.instances.editor.document.getBody().getText());
+    }
+
+</script>

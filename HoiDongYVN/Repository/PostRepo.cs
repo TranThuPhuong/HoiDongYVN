@@ -45,5 +45,10 @@ namespace HoiDongYVN.Repository
             return Post;
         }
 
+        public async Task<Post> getPost(int postId)
+        {
+        var succeeded = await _context.TblPosts.FirstOrDefaultAsync(p => p.PkIPostId == postId);
+            return succeeded;
+        }
     }
 }

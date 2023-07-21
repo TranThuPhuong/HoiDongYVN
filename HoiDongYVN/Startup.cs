@@ -41,17 +41,17 @@ namespace HoiDongYVN
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(option =>
                 {
-                   option.LoginPath = "/Login/Login";
+                    option.LoginPath = "/Login/Login";
                     option.ExpireTimeSpan = TimeSpan.FromMinutes(60);
                 });
-      
+
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);  // Số phút mà Session tồn tại nếu không có hoạt động nào.
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-           
+
 
         }
 

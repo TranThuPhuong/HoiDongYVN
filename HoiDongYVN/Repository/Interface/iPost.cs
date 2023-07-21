@@ -8,5 +8,7 @@ namespace HoiDongYVN.Repository
     {
         Task<List<Post>> getListPost(int? Fk_iTagID, int? FK_iTagIDSub);
         Task<Post> createPost(Post Post);
+
+        Task<Post> getPost(int postId);
     }
 }

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<HoiDongYVN.Models.Post>
+
+@{
+    ViewData["Title"] = "IndexAdmin";
+}
+
+<h1>IndexAdmin</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.STitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DCreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DUpDatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SSource)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkICreator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkITag)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.STitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DCreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DUpDatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSource)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkICreator.SPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkITag.STagname)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PkIPostId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PkIPostId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PkIPostId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

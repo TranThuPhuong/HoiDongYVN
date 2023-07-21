@@ -18,13 +18,12 @@ var initSample = ( function() {
 		isBBCodeBuiltIn = !!CKEDITOR.plugins.get( 'bbcode' );
 
 	return function() {
-		var editorElement = CKEDITOR.document.getById( 'editor' );
-
+		var editorElement = CKEDITOR.document.getById('editor');
+		
 		// :(((
 		if ( isBBCodeBuiltIn ) {
 			editorElement.setHtml(
-				'Hello world!\n\n' +
-				'I\'m an instance of [url=https://ckeditor.com]CKEditor[/url].'
+				'Hello world!\n\n'
 			);
 		}
 
@@ -49,5 +48,6 @@ var initSample = ( function() {
 
 		return !!CKEDITOR.plugins.get( 'wysiwygarea' );
 	}
+
 } )();
 

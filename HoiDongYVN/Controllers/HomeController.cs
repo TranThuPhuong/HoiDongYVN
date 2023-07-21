@@ -51,6 +51,11 @@ namespace HoiDongYVN.Controllers
             return View(issuccess);
 
         }
+        public async Task<IActionResult> Detail(int postId)
+        {
+            Post post = await _iPost.getPost(postId);
+            return View(post);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
