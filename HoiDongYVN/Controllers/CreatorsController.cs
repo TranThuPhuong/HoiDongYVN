@@ -29,39 +29,14 @@ namespace HoiDongYVN.Controllers
         public IActionResult Index()
 
         {
-            //if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-            //{
-                // Người dùng đã đăng nhập và có quyền truy cập vào trang hoặc tài nguyên cụ thể
-                // Thực hiện các thao tác mong muốn tại đây
+          
                 return View(creatorRepo.GetCreators());
-            //}
-            //else
-            //{
-            //    // Người dùng không đủ quyền truy cập vào trang hoặc tài nguyên này
-            //    // Chuyển hướng đến trang đăng nhập hoặc hiển thị thông báo lỗi
-            //    return RedirectToAction("Login", "Login");
-            //}
+         
            
         }
 
 
-        // GET: Creators/Details/5
-        //public async task<iactionresult> details(int? id)
-        //{
-        //    if (id == null || _context.tblcreators == null)
-        //    {
-        //        return notfound();
-        //    }
-
-        //    var creator = await _context.tblcreators
-        //        .firstordefaultasync(m => m.pkicreatorid == id);
-        //    if (creator == null)
-        //    {
-        //        return notfound();
-        //    }
-
-        //    return view(creator);
-        //}
+      
        
         public IActionResult Detail(int id)
         {

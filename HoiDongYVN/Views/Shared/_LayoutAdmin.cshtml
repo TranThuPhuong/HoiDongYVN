@@ -33,34 +33,42 @@
 
                 Tip 2: you can also add an image using data-image tag
             -->
+
+            @{
+                var url = Context.Request.Path;
+                string activeDasboard = url == "/admin/" ? "active" : "";
+                string activePost = url == "/Post/" ? "active" : "";
+                string activeTags = url == "/Tags/" ? "active" : "";
+                string activeCreators = url == "/Creators/" ? "active" : "";
+            }
             <div class="sidebar-wrapper" style="background-color:#842416 !important">
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
+                    <a href="/Home/" class="simple-text">
                         Hội đông y Việt Nam
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.html">
+                    <li class="@activeDasboard">
+                        <a class="nav-link" href="/dasboard/">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="dashboard.html">
+                    <li class="@activePost">
+                        <a class="nav-link" href="/Post/">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Quản lý bài viết</p>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="./user.html">
+                    <li class="@activeCreators">
+                        <a class="nav-link" href="/Creators/">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Quản lý người tạo</p>
                         </a>
                     </li>
                    
-                    <li>
-                        <a class="nav-link" href="./typography.html">
+                    <li class="@activeTags">
+                        <a class="nav-link" href="/Tags/">
                             <i class="nc-icon nc-paper-2"></i>
                             <p>Quản lý danh mục</p>
                         </a>
@@ -287,7 +295,7 @@
     <script src="~/lib/assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
     <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
     <script src="~/lib/assets/js/demo.js"></script>
-
+   
     
     <script src="~/js/site.js" asp-append-version="true"></script>
 

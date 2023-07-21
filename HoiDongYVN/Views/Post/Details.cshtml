@@ -1,23 +1,21 @@
-﻿
+﻿@model HoiDongYVN.Models.ViewModel.PostModel
 @{
     ViewData["Title"] = "Details";
 }
 
 <div class="text-center">
     <div class="album py-5 bg-light" style="background-color: #ffffff!important;">
-        <div class="container">
+        <div class="container-fluid">
             <div class="post">
 
                 <div class="list-content" style="display: flex !important;">
-                    <div class="col-9">
-                        <div width="100%" class="post-title">LỄ KÝ KẾT BIÊN BẢN GHI NHỚ GIỮA HTC VIỄN THÔNG QUỐC TẾ VÀ HỘI ĐÔNG Y VIỆT NAM</div>
-                        <div class="post-description">Chiều 10/05/2023, tại Hà Nội, Trung ương Hội Đông y Việt Nam và Công ty cổ phần HTC Viễn thông Quốc tế đã tổ chức Lễ ký kết Biên bản ghi nhớ hợp tác chuyển đổi số toàn diện ngành Đông y Việt Nam trong giai đoạn mới.</div>
-                        <div class="post-content">
-                            <img class="post-img" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height:auto; width: 100%; display: block;" src="/image/image_post/lanhdao.jpg" data-holder-rendered="true">
-                            <p class="MsoNormal" style="margin: 0cm; font-size: 12pt; font-family: Calibri, sans-serif; text-align: justify;"><span lang="VI" style="font-family: " times="" new=""> &nbsp;Phát biểu tại buổi lễ, TTND. PGS. TS Đậu Xuân Cảnh, Chủ tịch Hội Đông y Việt Nam nhận định tầm quan trọng của việc chuyển đổi số toàn ngành Đông y Việt Nam, điều này sẽ mang lại nhiều lợi ích đối với Hội Đông y Việt Nam nói riêng và ngành Đông y nước nhà nói chung. Khi ứng dụng chuyển đổi số, sự liên kết thông tin giữa các bộ phận trực thuộc Trung ương Hôij, các Chi hội trực thuộc được kết nối trên nền tảng một hệ thống công nghệ đồng nhất, giúp cho các vấn đề phát sinh sẽ được giải quyết ngay khi xảy ra và sự vận hành không bị tắc nghẽn, gây tác động xấu đến hoạt động của bộ máy.<o:p></o:p></span></p>
-                        </div>
+                    <div class="col-9" style="max-width: 75%;">
+                        <div width="100%" class="post-title"> @Model.STitle</div>
+                        <div class="post-date" style="float:right">@Model.SDate</div>
+                        <div class="post-description">@Model.SDescription</div>
+                        <div class="card-text"> @Html.Raw(@Model.SContent)</div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-3" style="max-width: 25%;">
                         <div class="card" style="width: 18rem;">
                             <div class="card-header">
                                 Tin tức nổi bật
@@ -36,4 +34,3 @@
         </div>
     </div>
 </div>
-

@@ -35,7 +35,7 @@ namespace HoiDongYVN
             services.AddDbContext<db_HoiDongYVNContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<iCreator, CreatorRepo>();
             services.AddScoped<iPost, PostRepo>();
-
+            services.AddScoped<iTag, TagRepo>();
             // Thêm dịch vụ Session vào container dịch vụ.
             services.AddDistributedMemoryCache();  // Cho phép lưu trữ Session trong bộ nhớ. Đối với môi trường sản xuất, bạn có thể muốn sử dụng cách lưu trữ khác như Redis.
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -51,7 +51,7 @@ namespace HoiDongYVN
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-           
+            services.AddHttpContextAccessor();
 
         }
 

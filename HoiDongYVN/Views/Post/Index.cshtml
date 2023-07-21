@@ -1,48 +1,157 @@
-﻿@{
-    ViewData["Title"] = "List Post";
+﻿@model IEnumerable<HoiDongYVN.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<div class="text-center">
-    <div class="album py-5 bg-light" style="background-color: #ffffff!important;">
-        <div class="container">
-            <div class="category news">
-                <div class="new-title" style="display: flex !important; align-items: center !important;justify-content: space-between !important; margin-bottom:20px">
-                    <h4 style="text-align:left; display:inline">Tin tức hoạt động</h4>
-                    <a class="btn btn-outline-success btn-sm btn-viewall " href="#">Xem tất cả</a>
-                </div>
-                <div class="list-content" style="display: flex !important;">
-                    <div class="col-9">
-                        <div class="card mb-3" style="width: 100%;">
-                            <div class="row no-gutters">
-                                <div class="col-md-4">
-                                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="/image/image_post/lanhdao.jpg" data-holder-rendered="true">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                        <a href="#" style="text-align:right">>>Xem tiếp</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-header">
-                                Featured
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="tblPost">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.STitle)
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.SDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DCreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DUpDatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SSource)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkICreator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkITag)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr id="row-@item.PkIPostId">
+                <td id="PostTitle_@item.PkIPostId">
+                @Html.DisplayFor(modelItem => item.STitle)
+            </td>
+         @*   <td>
+                @Html.DisplayFor(modelItem => item.SDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DCreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DUpDatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSource)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkICreator.SPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkITag.STagname)
+            </td>*@
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.PkIPostId"><i class="fa fa-edit"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.PkIPostId"><i class="fa fa-eye"></i></a> |
+                    @*<a asp-action="Delete" asp-route-id="@item.PkIPostId">Delete</a>*@
+
+                @*<a role="dialog" id="openModalViewButton" data-toggle="modal" data-target="#EditTagModal" aria-haspopup="true" aria-expanded="false" onclick="getTagById(@item.PkIPostId)"><i class="fa fa-edit"></i></a> |
+                <a role="dialog" id="openModalEditButton" data-toggle="modal" data-target="#EditTagModal" aria-haspopup="true" aria-expanded="false" onclick="getTagById(@item.PkIPostId)"><i class="fa fa-edit"></i></a> |*@
+                 <a role="dialog" id="openModalDeleteButton" data-toggle="modal" data-target="#DeletePostModal" aria-haspopup="true" aria-expanded="false" onclick="getPostById(@item.PkIPostId)"><i class="fa fa-times"></i></a>
+                  
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div class="modal fade" id="DeletePostModal" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @*<form action="#" method="">*@
+            <div class="modal-header" style="color: #fff;background-color: #6A1408;">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label for="title" class="col-sm-12 col-form-label">Bạn có chắc chắn muốn xóa không?</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnCloseModalDelete" data-dismiss="modal" onclick="closeModal()">Đóng</button>
+                <button type="button" class="btn btn-danger" onclick="deletePost()">Xác nhận</button>
+            </div>
+            @*</form>*@
         </div>
     </div>
 </div>
+
+<script>
+    var idUpdate = 0;
+
+
+    function deletePost() {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("btnCloseModalDelete").click();
+                document.getElementById('tblPost').deleteRow(document.getElementById("row-" + idUpdate).rowIndex);
+            }
+        };
+        request.open("POST", "/Post/DeletePost/" + idUpdate, true);
+        request.send();
+    }
+    function getPostById(id) {
+        //var namepass = document.getElementById("TagName_" + id).textContent.trim();
+        //document.getElementById("new_tagName").value = namepass;
+        //var name = document.getElementById('new_tagName');
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var res = JSON.parse(this.responseText);
+                //id = 31;
+                //namepass.value = res.sTagname;
+                idUpdate = res.pkIPostId;
+                //name.value = res.sTagname;
+
+            }
+        };
+        request.open("GET", "/Post/" + id, true);
+        request.send();
+    }
+    function closeModal() {
+        document.getElementById("name").value = "";
+        document.getElementById("error").innerHTML = "";
+    }
+</script>

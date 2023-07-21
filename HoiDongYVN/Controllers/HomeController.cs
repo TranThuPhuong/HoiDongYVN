@@ -1,7 +1,10 @@
 ﻿using HoiDongYVN.Models;
 using HoiDongYVN.Repository;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,43 +15,45 @@ namespace HoiDongYVN.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly iPost _iPost;
+        private readonly iPost postRepo;
+        private readonly iTag tagRepo;
 
-        public HomeController(ILogger<HomeController> logger, iPost iPost)
+        public HomeController(iPost postRepo, iTag tagRepo)
         {
-            _logger = logger;
-            _iPost = iPost;
+            this.postRepo = postRepo;
+            this.tagRepo = tagRepo;
         }
-
         public IActionResult Index()
+        {
+
+            return View(postRepo.GetPosts());
+        }
+        public IActionResult Introduction()
         {
             return View();
         }
 
-        public async Task<IActionResult> Post(int? FK_iTagID, int? FK_iTagIDSub)
+        public IActionResult Post(int FK_iTagID, int page)
         {
+            var post = postRepo.GetAllByTagId(FK_iTagID).Count();
+            var tag = tagRepo.GetTagById(FK_iTagID);
+            ViewBag.Tagname = tag.STagname;
+            ViewBag.Tagid = tag.PkITagId;
 
-            List<Post> issuccess = await _iPost.getListPost(FK_iTagID, FK_iTagIDSub);
-            if (FK_iTagID != null
-                 && FK_iTagIDSub != null)
-            {
-                if ((FK_iTagID == 2 && FK_iTagIDSub == 3) || (FK_iTagID == 3 && FK_iTagIDSub == 2)) ViewData["tag"] = "Tin tức và sự kiện";
+            int PAGE_SIZE = 5;
+            var posts = postRepo.GetAllByTagId(FK_iTagID);
+            int pageNumber;
+            int totalPages = (int)Math.Ceiling((double)posts.Count() / PAGE_SIZE);
 
-            }
+            if (page > 0)
+                pageNumber = page > totalPages ? totalPages : page;
             else
-            if (FK_iTagID != null)
-            {
-                switch (FK_iTagID)
-                {
-                    case 1: ViewData["tag"] = "Kiến thức đông y"; break;
-                    case 2: ViewData["tag"] = "Tin tức trong nước"; break;
-                    case 3: ViewData["tag"] = "Tin tức quốc tế"; break;
-                }
-            }
+                pageNumber = 1;
 
 
-            return View(issuccess);
+            var pagedList = new PagedList<Post>(posts, pageNumber, PAGE_SIZE);
+
+            return View("Post", pagedList);
 
         }
 
